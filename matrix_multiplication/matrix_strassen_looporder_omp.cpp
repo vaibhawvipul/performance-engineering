@@ -68,10 +68,10 @@ inline void seqMatMultPF( long m, long n, long p,
                        double* C, const long CN)  {   
 #pragma omp parallel for schedule(runtime)
     for(long i=0;i<m;++i) {
-        for (long k = 0; k < n; k++) {
-            for (long j = 0; j < p; j++) {  
-		C[i*CN+j] += A[i*AN+k]*B[k*BN+j];
-	    }	
+        for (long k = 0; k < p; k++) {
+            for (long j = 0; j < n; j++) {  
+                C[i*CN+j] += A[i*AN+k]*B[k*BN+j];
+            }	
         }  
     }
 } 
